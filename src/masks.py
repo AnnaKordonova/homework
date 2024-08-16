@@ -19,5 +19,3 @@ def get_mask_account(account_number: int) -> str:
 
     hidden_account_str = str(account_number)
     return "**" + hidden_account_str[-4:]
-
-print(get_mask_card_number(1234567890123456))
