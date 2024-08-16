@@ -1,5 +1,6 @@
 from masks import get_mask_account, get_mask_card_number
 
+
 def mask_account_card(user_card: str) -> str:
     """Функция для вывода скрытых банковских реквизитов"""
     account_numbers = []
@@ -24,14 +25,8 @@ def mask_account_card(user_card: str) -> str:
     return all_info
 
 
-
 def get_date(implicated_date: str) -> str:
+    """Функция для извлечения даты из строки в формат ДД.ММ.ГГГГ"""
     formatted_date = implicated_date.split("T")[0]
     extracted_date = f"{formatted_date[-2:]}.{formatted_date[5:7]}.{formatted_date[:4]}"
     return extracted_date
-
-
-
-
-# В том же модуле создайте функцию get_date, которая принимает на вход строку с датой в формате
-#"2024-03-11T02:26:18.671407" и возвращает строку с датой в формате "ДД.ММ.ГГГГ"("11.03.2024").
