@@ -7,3 +7,9 @@ def filter_by_state(data: list[dict[str, Any]], state = "EXECUTED") -> list[dict
         if operation.get("state") == state:
             new_list.append(operation)
     return new_list
+
+
+def sort_by_date(data: list[dict[str, Any]], ascending=True) -> list[dict[str, Any]]:
+    result = sorted(data, key=lambda x: x.get("date"), reverse=ascending)
+    return result
+
