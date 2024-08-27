@@ -18,7 +18,7 @@ def mask_account_card(user_card: str) -> str:
     str_bank_details = "".join(bank_details)
 
     if len(account_numbers) > 20 or len(account_numbers) < 16:
-        return  "Неверные данные"
+        return "Неверные данные"
 
     if len(account_numbers) == 16:
         str_number = get_mask_card_number(int_list_number)
