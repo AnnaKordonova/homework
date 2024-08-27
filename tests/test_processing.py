@@ -13,3 +13,6 @@
 # )
 # def test_filter_by_state(bank_operations, state, expected):
 #     assert filter_by_state(bank_operations, state) == expected
+
+
+# date_object = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%f")

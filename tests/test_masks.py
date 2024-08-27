@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from src.masks import get_mask_account, get_mask_card_number
@@ -12,9 +14,9 @@ from src.masks import get_mask_account, get_mask_card_number
         ("", "Ничего не введено"),
         ("457846387643754375475", "Ошибка в номере карты"),
         ("686235", "Ошибка в номере карты"),
-    ]
+    ],
 )
-def test_get_mask_card_number(card_number, expected):
+def test_get_mask_card_number(card_number: int, expected: Any) -> Any:
     assert get_mask_card_number(card_number) == expected
 
 
@@ -27,7 +29,7 @@ def test_get_mask_card_number(card_number, expected):
         ("", "Ничего не введено"),
         ("4578463876437543754345675", "Ошибка в номере счёта"),
         ("686235", "Ошибка в номере счёта"),
-    ]
+    ],
 )
-def test_get_mask_account(account_number, expected):
+def test_get_mask_account(account_number: int, expected: Any) -> Any:
     assert get_mask_account(account_number) == expected
