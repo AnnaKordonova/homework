@@ -13,5 +13,9 @@ def filter_by_state(data: list[dict[str, Any]], state="EXECUTED") -> list[dict[s
 
 def sort_by_date(data: list[dict[str, Any]], ascending=True) -> list[dict[str, Any]]:
     """Функция, возвращающая список словарей отсортированных по дате"""
-    result = sorted(data, key=itemgetter("date"))
+    result = sorted(data, key=itemgetter("date"), reverse=ascending)
     return result
+
+
+# sorted_list = sorted(operation_info_list, key=itemgetter("date"), reverse=sort_reverse)
+# from operator import itemgetter
