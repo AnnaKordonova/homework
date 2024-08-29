@@ -1,20 +1,18 @@
-from typing import Iterable
+from typing import Iterable, Any
 
 
-def filter_by_currency(transactions: list[dict], currency: str) -> Iterable:
+def filter_by_currency(transactions: list[dict], currency: str) -> Any:
     """Функция принимающая на вход список словарей, представляющих транзакции.
     Возвращает итератор, который поочерёдно выдаёт транзакции,
     где валюта соответсвует заданной"""
-    if len(currency) == 0:
-        return []
-    if len(currency) > 3 or len(currency) < 3:
+    if len(currency) != 3:
         return []
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction #тест+
 
 
-def transaction_descriptions(transactions: list[dict]) -> Iterable:
+def transaction_descriptions(transactions: list[dict]) -> Any:
     """Функция принимающая список словарей с транзакциями.
     Возвращает описание каждой операции по очереди."""
     for transaction in transactions:

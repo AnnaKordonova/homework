@@ -30,7 +30,7 @@ def test_filter_by_state(bank_operation: list[dict], state: str, expected: Any) 
     assert filter_by_state(bank_operation, state) == expected
 
 
-def test_sort_by_date():
+def test_sort_by_date() -> Any:
     operations = [
         {"id": 30303030, "state": "EXECUTED", "date": "2024-03-13T02:26:18.671407"},
         {"id": 10101010, "state": "EXECUTED", "date": "2024-03-11T10:20:30.123456"},
@@ -44,5 +44,5 @@ def test_sort_by_date():
     ]
 
 
-def test_sort_by_date_empty_list():
+def test_sort_by_date_empty_list() -> Any:
     assert sort_by_date([]) == []
