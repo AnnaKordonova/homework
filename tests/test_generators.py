@@ -2,7 +2,7 @@ from typing import Any
 
 import pytest
 
-from src.generators import filter_by_currency
+from src.generators import filter_by_currency, transaction_descriptions
 
 
 @pytest.mark.parametrize(
@@ -54,3 +54,17 @@ def test_filter_by_currency(transactions: list[dict], state: str, expected: Any)
     assert result == expected
 
 
+# @pytest.mark.parametrize(
+#     "state, expected",
+
+
+def test_transactions_descriptions(transactions: list[dict]) -> Any:
+    result = list(transaction_descriptions(transactions))
+    assert result == [
+        "Перевод организации",
+        "Перевод со счета на счет",
+        "Перевод со счета на счет"]
+
+def test_transactions_descriptions_empty(transactions: list[dict]) -> Any:
+    result = list(transaction_descriptions(transactions))
+    assert result
