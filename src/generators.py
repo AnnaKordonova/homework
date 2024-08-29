@@ -5,6 +5,10 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Iterable:
     """Функция принимающая на вход список словарей, представляющих транзакции.
     Возвращает итератор, который поочерёдно выдаёт транзакции,
     где валюта соответсвует заданной"""
+    if len(currency) == 0:
+        return []
+    if len(currency) > 3 or len(currency) < 3:
+        return []
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction
