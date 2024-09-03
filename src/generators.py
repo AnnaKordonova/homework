@@ -9,7 +9,7 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Any:
         return []
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["code"] == currency:
-            yield transaction #тест+
+            yield transaction
 
 
 def transaction_descriptions(transactions: list[dict]) -> Any:
@@ -19,7 +19,7 @@ def transaction_descriptions(transactions: list[dict]) -> Any:
         if "description" not in transaction:
             return []
         description = transaction.get("description")
-        yield description #тест+
+        yield description
 
 
 def card_number_generator(start: int, end: int) -> Iterable:
