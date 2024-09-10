@@ -1,0 +1,2 @@
+Начало работы функции 'fail_func'
+'fail_func' error: ZeroDivisionError. Inputs: (1, 0), {}
