@@ -1,26 +1,32 @@
 import json
-import os
+from json import JSONDecodeError
 from typing import Any
 
+from src.external_api import convert_to_rub
 
-def json_file_reader(file_path: str) -> list:
-    if not os.path.exists(file_path):
-        return []
 
+def load_transactions(file_path: str) -> list:
+    """Функция принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях."""
     try:
-        with open(file_path, encoding='utf-8') as trans_file:
-            data = json.load(trans_file)
-            if isinstance(data, list):
-                return data
-            else:
+        with open(file_path, encoding="utf-8") as fin_file:
+            try:
+                transactions = json.load(fin_file)
+            except JSONDecodeError:
                 return []
-    except (json.JSONDecodeError, OSError):
+        if not isinstance(transactions, list):
+            return []
+        return transactions
+    except FileNotFoundError:
         return []
 
 
-def get_amount_transaction(trans: dict, currency: str="RUB") -> Any:
+def transaction_amount(trans: dict, currency: str = "RUB") -> Any:
+    """Функция принимает на вход транзакцию и возвращает сумму транзакции в рублях"""
     if trans["operationAmount"]["currency"]["code"] == currency:
         amount = trans["operationAmount"]["amount"]
     else:
-        amount = currency_conversion(trans)
+        amount = convert_to_rub(trans)
     return amount
+
+
+print(load_transactions("operations.json"))

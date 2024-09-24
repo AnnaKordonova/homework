@@ -29,4 +29,7 @@ def test_fail_func() -> None:
     assert os.path.exists("mylog.txt")
     with open("mylog.txt", "r", encoding="utf-8") as file:
         test_log_text = file.read()
-        assert test_log_text == "Начало работы функции 'fail_func'\n'fail_func' error: ZeroDivisionError. Inputs: (1, 0), {}\n"
+        assert (
+            test_log_text
+            == "Начало работы функции 'fail_func'\n'fail_func' error: ZeroDivisionError. Inputs: (1, 0), {}\n"
+        )
