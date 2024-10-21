@@ -44,7 +44,7 @@ def trans_1():
     }
 
 
-def test_load_transactions_nofile():
+def test_load_transactions_nofile() -> None:
     assert load_transactions("nofile") == []
 
 
