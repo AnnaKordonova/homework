@@ -1,25 +1,26 @@
 import logging
 import os
 
-logs_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'logs')
+logs_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs")
 
 os.makedirs(logs_dir, exist_ok=True)
 
-log_file_path = os.path.join(logs_dir, 'masks.log')
+log_file_path = os.path.join(logs_dir, "masks.log")
 
 
 logger = logging.getLogger("masks")
-logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler(log_file_path, mode='w', encoding='utf-8')
+logger.setLevel(logging.DEBUG)
+file_handler = logging.FileHandler(log_file_path, mode="w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s %(name)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
+
 
 def get_mask_card_number(card_number: int | None = None) -> str:
     """Функция для скрытия полного номера карты"""
 
     if card_number is None:
-        logger.warning("Ничего не введено")
+        logger.error("Ничего не введено")
         return "Ничего не введено"
 
     logger.info("Получен номер карты")
@@ -48,7 +49,7 @@ def get_mask_account(account_number: int | None = None) -> str:
     """Функция для скрытия полного номера счёта"""
 
     if account_number is None:
-        logger.warning("Ничего не введено")
+        logger.error("Ничего не введено")
         return "Ничего не введено"
 
     logger.info("Получен номер счёта")
@@ -63,5 +64,6 @@ def get_mask_account(account_number: int | None = None) -> str:
     logger.info(f"Скрытый номер счёта: {masked_account}")
     return masked_account
 
-print(get_mask_card_number(1234567890123456))
+
+print(get_mask_card_number(1234567123456))
 print(get_mask_account(1))
