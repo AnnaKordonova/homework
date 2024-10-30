@@ -23,7 +23,7 @@ def read_csv_file(file_path: str) -> pd.DataFrame:
         logger.info("Данные успешно считаны из CSV-файла.")
         return data
     except Exception as e:
-        logger.error(f"Ошибка при считывании CSV-файла: {e}")
+        logger.error(f"Ошибка при считывании CSV-файла: {str(e)}")
         raise
 
 

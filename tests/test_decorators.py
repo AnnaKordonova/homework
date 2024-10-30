@@ -23,13 +23,18 @@ def test_success_func(capsys: Any) -> Any:
 
 
 def test_fail_func() -> None:
+
+    if os.path.exists("mylog.txt"):
+        os.remove("mylog.txt")
+
     with pytest.raises(ZeroDivisionError):
         fail_func(1, 0)
 
     assert os.path.exists("mylog.txt")
+
     with open("mylog.txt", "r", encoding="utf-8") as file:
         test_log_text = file.read()
         assert (
-            test_log_text
-            == "Начало работы функции 'fail_func'\n'fail_func' error: ZeroDivisionError. Inputs: (1, 0), {}\n"
+            test_log_text == "Начало работы функции 'fail_func'\n"
+            "'fail_func' error: ZeroDivisionError. Inputs: (1, 0), {}\n"
         )
