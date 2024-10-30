@@ -13,8 +13,11 @@ def test_read_csv_file_success(mock_read_csv):
 
     result = read_csv_file("dummy_path.csv")
 
-    assert isinstance(result, pd.DataFrame)
-    assert result.shape == (2, 2)
+    assert isinstance(result, list)
+    assert len(result) == 2
+    assert result[0] == {"column1": 1, "column2": 3}
+    assert result[1] == {"column1": 2, "column2": 4}
+
     mock_read_csv.assert_called_once_with("dummy_path.csv")
 
 

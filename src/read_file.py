@@ -15,15 +15,17 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 
 
-def read_csv_file(file_path: str) -> pd.DataFrame:
-    """Считывает данные из CSV-файла."""
+def read_csv_file(file_path: str) -> list:
+    """Считывает данные из CSV-файла и возвращает список словарей с транзакциями."""
     logger.info(f"Считывание данных из CSV-файла: {file_path}")
     try:
         data = pd.read_csv(file_path)
         logger.info("Данные успешно считаны из CSV-файла.")
-        return data
+
+        transactions = data.to_dict(orient="records")
+        return transactions
     except Exception as e:
-        logger.error(f"Ошибка при считывании CSV-файла: {str(e)}")
+        logger.error(f"Ошибка при считывании CSV-файла: {e}")
         raise
 
 
