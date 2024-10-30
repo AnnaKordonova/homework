@@ -19,7 +19,7 @@ def fail_func(x: int | float, y: int | float) -> int | float:
 def test_success_func(capsys: Any) -> Any:
     success_func(2, 3)
     captured = capsys.readouterr()
-    assert captured.out == f"Начало работы функции 'success_func'\n5Конец работы функции 'success_func'\n"
+    assert captured.out == "Начало работы функции 'success_func'\n5Конец работы функции 'success_func'\n"
 
 
 def test_fail_func() -> None:
