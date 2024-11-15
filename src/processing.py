@@ -6,7 +6,7 @@ def filter_by_state(data: list[dict[str, Any]], state: str = "EXECUTED") -> list
     """Функция, возвращающая список словарей по определённому ключу 'state'"""
     new_list = []
     for operation in data:
-        if operation["state"] == state:
+        if "state" in operation and operation["state"] == state:
             new_list.append(operation)
     return new_list
 
