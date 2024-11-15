@@ -14,6 +14,9 @@ def mask_account_card(user_card: str) -> str:
         else:
             bank_details.append(symbol)
 
+    if not account_numbers:
+        return "Ошибка: номер карты не содержит цифр"
+
     int_list_number = int("".join(account_numbers))
     str_bank_details = "".join(bank_details)
 
